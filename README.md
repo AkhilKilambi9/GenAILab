@@ -23,3 +23,15 @@ WRITING_PROMPT_3=Write a short story about a challenging adventure.
 WRITING_PROMPT_4=Tell a story where someone travels and learns something valuable.
 WRITING_PROMPT_5=Create a narrative about a hero's journey in three paragraphs.
 
+
+# Chain-of-Thought Prompts
+COT_PROMPT_1=Analyze the sentiment of this movie review. Think step-by-step to decide if its positive or negative.
+COT_PROMPT_2=Is this statement positive or negative? First, describe the key words, then conclude the sentiment.
+COT_PROMPT_3=Determine the sentiment. First, find any positive or negative phrases, then conclude the sentiment.
+
+# Few-Shot Prompts
+FEW_SHOT_PROMPT_1=Analyze the sentiment of this movie review: 'The plot was dull and uninspiring.' Sentiment: Negative.
+FEW_SHOT_PROMPT_2=Analyze the sentiment of this movie review: 'The plot was dull and uninspiring.' Sentiment: Negative.\n'Great acting and plot twists make this a must-watch!' Sentiment: Positive.
+FEW_SHOT_PROMPT_3=Analyze the sentiment with three examples before the prompt.
+FEW_SHOT_PROMPT_4=Provide sentiment analysis with five labeled examples before the prompt.
+
