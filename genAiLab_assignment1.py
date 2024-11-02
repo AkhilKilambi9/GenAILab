@@ -57,9 +57,49 @@ def run_experiments(tasks):
                 time.sleep(1.5)  # Pause for rate limiting
     return results
 
-# Run and save experiments
+# Run and save experiments for main tasks
 experiment_results = run_experiments(tasks)
 with open("prompt_engineering_results.json", "w") as outfile:
     json.dump(experiment_results, outfile, indent=4)
+
+# Chain-of-Thought Experiment
+def chain_of_thought_experiment():
+    cot_prompts = load_prompts("COT_PROMPT", 3)
+    cot_results = {}
+    for i, prompt in enumerate(cot_prompts):
+        if prompt:
+            print(f"Running Chain-of-Thought prompt {i+1}")
+            output = generate_response(prompt)
+            cot_results[f"Chain-of-Thought Prompt {i+1}"] = {
+                "prompt": prompt,
+                "output": output
+            }
+            time.sleep(1.5)
+    return cot_results
+
+# Save Chain-of-Thought results
+cot_results = chain_of_thought_experiment()
+with open("chain_of_thought_results.json", "w") as cot_file:
+    json.dump(cot_results, cot_file, indent=4)
+
+# Few-Shot Prompting Experiment
+def few_shot_experiment():
+    few_shot_prompts = load_prompts("FEW_SHOT_PROMPT", 4)
+    few_shot_results = {}
+    for i, prompt in enumerate(few_shot_prompts):
+        if prompt:
+            print(f"Running Few-Shot prompt {i+1}")
+            output = generate_response(prompt)
+            few_shot_results[f"Few-Shot Prompt {i+1}"] = {
+                "prompt": prompt,
+                "output": output
+            }
+            time.sleep(1.5)
+    return few_shot_results
+
+# Save Few-Shot results
+few_shot_results = few_shot_experiment()
+with open("few_shot_results.json", "w") as few_shot_file:
+    json.dump(few_shot_results, few_shot_file, indent=4)
 
 print("Experiments completed and results saved to JSON files.")
