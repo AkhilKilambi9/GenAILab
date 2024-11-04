@@ -17,7 +17,7 @@ else:
     print("API key loaded successfully.")
 
 # Function to generate a response from the OpenAI API
-def generate_response(prompt, model="gpt-3.5-turbo", max_tokens=150, temperature=0.7):
+def generate_response(prompt, model="gpt-3.5-turbo", max_tokens=1000, temperature=0.7):
     try:
         response = openai.ChatCompletion.create(
             model=model,
@@ -37,7 +37,7 @@ def load_prompts(prefix, count):
 # Define tasks and load prompts from the .env file
 tasks = {
     "Text Summarization": load_prompts("SUMMARIZATION_PROMPT", 5),
-    "Sentiment Analysis": load_prompts("SENTIMENT_PROMPT", 5),
+    "Sentiment Analysis": load_prompts("QA_PROMPT", 5),
     "Creative Writing": load_prompts("WRITING_PROMPT", 5),
 }
 
@@ -84,7 +84,7 @@ with open("chain_of_thought_results.json", "w") as cot_file:
 
 # Few-Shot Prompting Experiment
 def few_shot_experiment():
-    few_shot_prompts = load_prompts("FEW_SHOT_PROMPT", 4)
+    few_shot_prompts = load_prompts("FEW_SHOT_PROMPT", 8)
     few_shot_results = {}
     for i, prompt in enumerate(few_shot_prompts):
         if prompt:
